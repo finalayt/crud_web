@@ -1,1 +1,7 @@
-insert into person (Id, Name, Age) VALUES (1, 'Алексей', 25);
+CREATE TABLE person 
+(
+    Id INT PRIMARY KEY,
+    Name text,
+    Age INT
+);
+
