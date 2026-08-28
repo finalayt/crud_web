@@ -1,0 +1,1 @@
+insert into person (Id, Name, Age) VALUES (1, 'Алексей', 25);
