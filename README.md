@@ -1,4 +1,4 @@
-This project was created to training in dotnet. CRUD web for work with database. It was used for intership.
+This project was created to training in dotnet. CRUD web for work with database. It was used for internship.
 How to use:
 1) Copy this repository in vs code (or another IDE).
 2) Install sqlite and dotnet extensions.
