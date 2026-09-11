@@ -1,15 +1,30 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using crud_web.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace crud_web.Controllers;
 
 public class HomeController : Controller
 {
-    public IActionResult Index()
+    private readonly PersonDbContext _Context;
+
+    public HomeController(PersonDbContext context)
     {
-        return View();
+        _Context = context;
     }
+    public async Task<IActionResult> Index()
+    {
+        var people = await _Context.People.ToListAsync();   
+        return View(people);
+    }
+
+    //public async Task<IActionResult> Delete(int id)
+    //{
+    //  var person = await _Context.People.FindAsync<id>;
+
+     // if (person != null) 
+    //}
 
     public IActionResult Privacy()
     {
