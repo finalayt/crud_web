@@ -18,9 +18,12 @@
                 <td>@person.Id</td>
                 <td>@person.Name</td>
                 <td>@person.Age</td>
-                <td class="nav-link text-dark"  asp-controller="Home" asp-action="Delete">Delete</td>
-                <td class="nav-link text-dark"  asp-controller="Home" asp-action="Privacy" asp-route-id="@person.Id">Update</td>
+                <td><a class="nav-link text-dark"  asp-controller="Home" asp-action="Delete" asp-route-id="@person.Id">Delete</a></td>
+                <td><a class="nav-link text-dark"  asp-controller="Home" asp-action="Creating" asp-route-id="@person.Id">Update</a></td>
             </tr>
         }
+        <tr>
+            <td><a class="nav-link text-dark" asp-controller="Home" asp-action="Creating" asp-route-id="null">Create</a></td>
+        </tr>
    </table>
 </div>

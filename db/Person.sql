@@ -1,7 +1,2 @@
-CREATE TABLE person 
-(
-    Id INT PRIMARY KEY,
-    Name text,
-    Age INT
-);
+INSERT INTO person VALUES(2, 'Алексей', 23);
 

@@ -1,0 +1,9 @@
+@{
+    bool isCreate = Model.Id == 0;
+
+    ViewData["Title"] = isCreate ? "Create page" : "Update page";
+}
+
+<form asp-action="Creating" method="post">
+
+</form>

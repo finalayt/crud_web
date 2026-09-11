@@ -19,12 +19,49 @@ public class HomeController : Controller
         return View(people);
     }
 
-    //public async Task<IActionResult> Delete(int id)
-    //{
-    //  var person = await _Context.People.FindAsync<id>;
+    public async Task<IActionResult> Delete(int id)
+    {
+      var person = await _Context.People.FindAsync(id);
 
-     // if (person != null) 
-    //}
+      if (person != null)
+        {
+            _Context.People.Remove(person);
+            await _Context.SaveChangesAsync();
+        }
+        return RedirectToAction(nameof(Index));
+    }
+
+    public async Task<IActionResult> Creating(int? id)
+    {
+        if (id == null) return  View(new Person());
+
+        var person = await _Context.People.FindAsync(id);
+        if (person == null) return NotFound();
+
+        return View(person);
+
+    }
+    public async Task<IActionResult> Creating(Person person, string actionType)
+    {
+        if (ModelState.IsValid)
+        {
+            if (actionType == "Create")
+            {
+            var exists = await _Context.People.FindAsync(person.Id);
+            if (exists != null)
+                {
+                    ModelState.AddModelError("Id", "This user is already exist");
+                    return View(person);
+                }
+                _Context.People.Add(person);    
+            }
+            else _Context.People.Update(person);
+
+        await _Context.SaveChangesAsync();
+        return RedirectToAction(nameof(Index));
+        }
+return View(person);
+    }
 
     public IActionResult Privacy()
     {
