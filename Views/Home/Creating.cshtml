@@ -1,3 +1,4 @@
+@model crud_web.Models.Person
 @{
     bool isCreate = Model.Id == 0;
 
@@ -5,5 +6,30 @@
 }
 
 <form asp-action="Creating" method="post">
+<input type="hidden" name="actionType" value="@(isCreate ? "Create" : "Update")" />
+ <div class="mb-3">
+        <label class="form-label">ID</label>
+        @if (isCreate)
+        {
+            <input type="number" name="Id" class="form-control" value="" required />
+        }
+        else
+        {
+            <input type="number" name="Id" class="form-control" value="@Model.Id" readonly />
+        }
+    </div>
+    <div class = "mb-3">
+        <label class="form-label">Name</label>
+    <input asp-for="Name" class="form-control" />
 
+    </div>
+    <div class = "mb-3">
+        <label class="form-label">Age</label>
+    <input asp-for="Age" class="form-control" />
+
+    </div>
+
+        <button type="submit" class="btn btn-primary">
+        @(isCreate ? "Create" : "Save Changes")
+    </button>
 </form>

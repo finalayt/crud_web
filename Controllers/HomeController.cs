@@ -31,6 +31,7 @@ public class HomeController : Controller
         return RedirectToAction(nameof(Index));
     }
 
+[HttpGet]
     public async Task<IActionResult> Creating(int? id)
     {
         if (id == null) return  View(new Person());
@@ -41,6 +42,8 @@ public class HomeController : Controller
         return View(person);
 
     }
+
+[HttpPost]
     public async Task<IActionResult> Creating(Person person, string actionType)
     {
         if (ModelState.IsValid)
