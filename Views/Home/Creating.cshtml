@@ -1,6 +1,6 @@
 @model crud_web.Models.Person
 @{
-    bool isCreate = Model.Id == 0;
+    bool isCreate = ViewBag.ActionType == "Create";
 
     ViewData["Title"] = isCreate ? "Create page" : "Update page";
 }
@@ -17,6 +17,7 @@
         {
             <input type="number" name="Id" class="form-control" value="@Model.Id" readonly />
         }
+        <span asp-validation-for="Id" class="text-danger"></span>
     </div>
     <div class = "mb-3">
         <label class="form-label">Name</label>

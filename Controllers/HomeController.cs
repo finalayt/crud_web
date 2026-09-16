@@ -32,9 +32,15 @@ public class HomeController : Controller
     }
 
 [HttpGet]
+
+
     public async Task<IActionResult> Creating(int? id)
-    {
-        if (id == null) return  View(new Person());
+    {;
+        if (id == null)   {
+
+        ViewBag.ActionType = "Create";  
+        return View(new Person());
+        }
 
         var person = await _Context.People.FindAsync(id);
         if (person == null) return NotFound();
@@ -46,6 +52,8 @@ public class HomeController : Controller
 [HttpPost]
     public async Task<IActionResult> Creating(Person person, string actionType)
     {
+        ViewBag.ActionType = actionType;
+
         if (ModelState.IsValid)
         {
             if (actionType == "Create")
