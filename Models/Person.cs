@@ -14,5 +14,6 @@ public partial class Person
 
     public string? Name { get; set; }
 
+    [Range(1, 125, ErrorMessage = "Too much value")]
     public int? Age { get; set; }
 }

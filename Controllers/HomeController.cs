@@ -56,6 +56,7 @@ public class HomeController : Controller
 
         if (ModelState.IsValid)
         {
+
             if (actionType == "Create")
             {
             var exists = await _Context.People.FindAsync(person.Id);
